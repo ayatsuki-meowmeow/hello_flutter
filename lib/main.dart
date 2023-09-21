@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
+// 1. エントリーポイントのmain関数
 void main() {
+  // 2. MyAppを呼び出す
   runApp(const MyApp());
 }
 
+// MyAppクラス
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    // 3. タイトルとテーマを設定。画面の本体はMyHomePageクラスで定義
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -28,7 +32,7 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -57,6 +61,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  // 5.カウンターが押された時の処理
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -77,7 +82,9 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+    // 4.MyHomePageの画面を定義
     return Scaffold(
+      // 画面上部のタイトルバー
       appBar: AppBar(
         // TRY THIS: Try changing the color here to a specific color (to
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
@@ -106,9 +113,11 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            // 画面の中央に表示するテキスト
             const Text(
               'You have pushed the button this many times:',
             ),
+            // テキストの下に表示されるカウンターの値を表示するテキスト
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
@@ -116,6 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      // 右下の「+」ボタンに対応するフローティングアクションボタン
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
