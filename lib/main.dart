@@ -101,7 +101,26 @@ class _MyHomePageState extends State<MyHomePage> {
           onPressed: () => {debugPrint("ボタンが押されたよ")}, // テキストボタンが押されるたびにターミナルに出力
           child: const Text("テキストボタン"),
         ),
-        
+        const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Icon(
+              Icons.favorite,
+              color: Colors.pink,
+              size: 24.0,
+            ),
+            Icon(
+              Icons.audiotrack,
+              color: Colors.green,
+              size: 30.0,
+            ),
+            Icon(
+              Icons.beach_access,
+              color: Colors.blue,
+              size: 36.0,
+            ),
+          ]
+        )
       ])
     );
   }
