@@ -94,43 +94,15 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            // 画面の中央に表示するテキスト
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            // テキストの下に表示されるカウンターの値を表示するテキスト
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+      body: Column(children: [
+        const Text("Hello World"),
+        const Text("ハローワールド"),
+        TextButton(
+          onPressed: () => {debugPrint("ボタンが押されたよ")}, // テキストボタンが押されるたびにターミナルに出力
+          child: const Text("テキストボタン"),
         ),
-      ),
-      // 右下の「+」ボタンに対応するフローティングアクションボタン
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        
+      ])
     );
   }
 }
