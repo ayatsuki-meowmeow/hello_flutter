@@ -107,6 +107,8 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () => {debugPrint("押したね？")}, child: const Icon(Icons.timer)
       ),
+      drawer: const Drawer(child: Center(child: Text("ドロワー"))),
+      endDrawer: const Drawer(child: Center(child: Text("エンドドロワー"))),
     );
   }
 }
