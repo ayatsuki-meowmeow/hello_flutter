@@ -59,6 +59,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+  String _type = "偶数";
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+      if (_counter % 2 == 0) {
+        _type = "偶数";
+      } else {
+        _type = "奇数";
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // 4.MyHomePageの画面を定義
@@ -83,29 +96,39 @@ class _MyHomePageState extends State<MyHomePage> {
           onPressed: () => {debugPrint("ボタンが押されたよ")}, // テキストボタンが押されるたびにターミナルに出力
           child: const Text("テキストボタン"),
         ),
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Icon(
-              Icons.favorite,
-              color: Colors.pink,
-              size: 24.0,
-            ),
-            Icon(
-              Icons.audiotrack,
-              color: Colors.green,
-              size: 30.0,
-            ),
-            Icon(
-              Icons.beach_access,
-              color: Colors.blue,
-              size: 36.0,
-            ),
-          ]
-        )
+        const Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+          Icon(
+            Icons.favorite,
+            color: Colors.pink,
+            size: 24.0,
+          ),
+          Icon(
+            Icons.audiotrack,
+            color: Colors.green,
+            size: 30.0,
+          ),
+          Icon(
+            Icons.beach_access,
+            color: Colors.blue,
+            size: 36.0,
+          ),
+        ]),
+        Text(
+          '$_counter',
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+        Text(
+          _type,
+          style: const TextStyle(fontSize: 20, color: Colors.red),
+        ),
       ]),
+      // floatingActionButton: FloatingActionButton(
+      //     onPressed: () => {debugPrint("押したね？")},
+      //     child: const Icon(Icons.timer)),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {debugPrint("押したね？")}, child: const Icon(Icons.timer)
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
       ),
       drawer: const Drawer(child: Center(child: Text("ドロワー"))),
       endDrawer: const Drawer(child: Center(child: Text("エンドドロワー"))),
