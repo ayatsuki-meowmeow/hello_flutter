@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 // 1. エントリーポイントのmain関数
 void main() {
@@ -36,6 +37,15 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
+      //ローカライゼーション(日本語化対応)
+      localizationsDelegates: const [
+        GlobalWidgetsLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('ja', 'JP'),
+      ],
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -63,6 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     // 4.MyHomePageの画面を定義
+    Intl.defaultLocale = Localizations.localeOf(context).toString(); // 日付のローカライゼーション
     return Scaffold(
       // 画面上部のタイトルバー
       appBar: AppBar(
@@ -80,9 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(children: [
         const Text("Hello World"),
         const Text("ハローワールド"),
-        Text(
-          DateFormat.yMEd().format(DateTime.now())
-        ),
+        Text(DateFormat.yMEd().format(DateTime.now())),
         TextButton(
           onPressed: () => {debugPrint("ボタンが押されたよ")}, // テキストボタンが押されるたびにターミナルに出力
           child: const Text("テキストボタン"),

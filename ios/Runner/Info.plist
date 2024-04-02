@@ -45,5 +45,10 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<!-- iosアプリでの日本語化対応 -->
+		<string>ja</string>
+	</array>
 </dict>
 </plist>
