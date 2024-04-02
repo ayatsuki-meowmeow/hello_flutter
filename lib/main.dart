@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 // 1. エントリーポイントのmain関数
 void main() {
@@ -79,34 +80,35 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(children: [
         const Text("Hello World"),
         const Text("ハローワールド"),
+        Text(
+          DateFormat.yMEd().format(DateTime.now())
+        ),
         TextButton(
           onPressed: () => {debugPrint("ボタンが押されたよ")}, // テキストボタンが押されるたびにターミナルに出力
           child: const Text("テキストボタン"),
         ),
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Icon(
-              Icons.favorite,
-              color: Colors.pink,
-              size: 24.0,
-            ),
-            Icon(
-              Icons.audiotrack,
-              color: Colors.green,
-              size: 30.0,
-            ),
-            Icon(
-              Icons.beach_access,
-              color: Colors.blue,
-              size: 36.0,
-            ),
-          ]
-        )
+        const Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+          Icon(
+            Icons.favorite,
+            color: Colors.pink,
+            size: 24.0,
+          ),
+          Icon(
+            Icons.audiotrack,
+            color: Colors.green,
+            size: 30.0,
+          ),
+          Icon(
+            Icons.beach_access,
+            color: Colors.blue,
+            size: 36.0,
+          ),
+        ]),
+        const TextField(),
       ]),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {debugPrint("押したね？")}, child: const Icon(Icons.timer)
-      ),
+          onPressed: () => {debugPrint("押したね？")},
+          child: const Icon(Icons.timer)),
       drawer: const Drawer(child: Center(child: Text("ドロワー"))),
       endDrawer: const Drawer(child: Center(child: Text("エンドドロワー"))),
     );
