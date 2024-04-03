@@ -89,6 +89,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _number = 0;
+
   @override
   Widget build(BuildContext context) {
     // 4.MyHomePageの画面を定義
@@ -115,7 +117,8 @@ class _MyHomePageState extends State<MyHomePage> {
           Text(l10n.helloWorld), // ローカライゼーションされる文字列
           Text(DateFormat.yMEd().format(DateTime.now())), // ローカライゼーションされる日付
           TextButton(
-            onPressed: () => {debugPrint("ボタンが押されたよ")}, // テキストボタンが押されるたびにターミナルに出力
+            onPressed: () =>
+                {debugPrint("ボタンが押されたよ")}, // テキストボタンが押されるたびにターミナルに出力
             child: const Text("テキストボタン"),
           ),
           // const Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
@@ -145,20 +148,32 @@ class _MyHomePageState extends State<MyHomePage> {
             width: 100,
             height: 100,
           ),
+          Text(
+            '$_number',
+          ),
           ElevatedButton(
             child: const Text('次へ'),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const SecondPage()),
+            onPressed: () async {
+              final newNum = await Navigator.of(context).push<int>(
+                MaterialPageRoute(
+                  builder: (_) => SecondPage(number: _number),
+                ),
               );
+              setState(() {
+                if (newNum != null) _number = newNum;
+              });
             },
           )
         ]),
       ]),
       floatingActionButton: FloatingActionButton(
-          onPressed: () => {debugPrint("押したね？")},
-          child: const Icon(Icons.timer)),
+          onPressed: () {
+            debugPrint("押したね？");
+            setState(() {
+              _number++;
+            });
+          },
+          child: const Icon(Icons.add)),
       drawer: const Drawer(child: Center(child: Text("ドロワー"))),
       endDrawer: const Drawer(child: Center(child: Text("エンドドロワー"))),
     );
@@ -166,7 +181,9 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class SecondPage extends StatelessWidget {
-  const SecondPage({super.key});
+  const SecondPage({super.key, required this.number});
+
+  final int number;
 
   @override
   Widget build(BuildContext context) {
@@ -175,11 +192,19 @@ class SecondPage extends StatelessWidget {
         title: const Text('Second Page'),
       ),
       body: Center(
-        child: ElevatedButton(
-          child: const Text('戻る'),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Number: $number'),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).pop(number + 1),
+              child: const Text('Increment'),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).pop(number - 1),
+              child: const Text('Decrement'),
+            ),
+          ],
         ),
       ),
     );
