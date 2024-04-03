@@ -36,7 +36,17 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        // 色の設定
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)
+        // 背景色の設定
+            .copyWith(background: Colors.blueGrey),
+        // 文字の装飾
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         useMaterial3: true,
       ),
       //ローカライゼーション(日本語化対応)
