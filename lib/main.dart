@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 // import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'gen/assets.gen.dart';
 
 // 1. エントリーポイントのmain関数
 void main() {
@@ -119,6 +120,15 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ]),
         const TextField(),
+        // flutter_genを使わずassetsの画像を表示
+        Image.asset('assets/circle.png'),
+        // flutter_genを使ってassetsの画像を表示
+        Assets.circle.image(),
+        // svgファイルの表示。解像度を気にしなくていい
+        Assets.check.svg(
+          width: 100,
+          height: 100,
+        ),
       ]),
       floatingActionButton: FloatingActionButton(
           onPressed: () => {debugPrint("押したね？")},
