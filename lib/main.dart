@@ -109,50 +109,52 @@ class _MyHomePageState extends State<MyHomePage> {
           Text("初めてのタイトル"),
         ]),
       ),
-      body: Column(children: [
-        const Text("Hello World"),
-        Text(l10n.helloWorld), // ローカライゼーションされる文字列
-        Text(DateFormat.yMEd().format(DateTime.now())), // ローカライゼーションされる日付
-        TextButton(
-          onPressed: () => {debugPrint("ボタンが押されたよ")}, // テキストボタンが押されるたびにターミナルに出力
-          child: const Text("テキストボタン"),
-        ),
-        const Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          Icon(
-            Icons.favorite,
-            color: Colors.pink,
-            size: 24.0,
+      body: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+        Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+          const Text("Hello World"),
+          Text(l10n.helloWorld), // ローカライゼーションされる文字列
+          Text(DateFormat.yMEd().format(DateTime.now())), // ローカライゼーションされる日付
+          TextButton(
+            onPressed: () => {debugPrint("ボタンが押されたよ")}, // テキストボタンが押されるたびにターミナルに出力
+            child: const Text("テキストボタン"),
           ),
-          Icon(
-            Icons.audiotrack,
-            color: Colors.green,
-            size: 30.0,
+          // const Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+          //   Icon(
+          //     Icons.favorite,
+          //     color: Colors.pink,
+          //     size: 24.0,
+          //   ),
+          //   Icon(
+          //     Icons.audiotrack,
+          //     color: Colors.green,
+          //     size: 30.0,
+          //   ),
+          //   Icon(
+          //     Icons.beach_access,
+          //     color: Colors.blue,
+          //     size: 36.0,
+          //   ),
+          // ]),
+          // const TextField(),
+          // flutter_genを使わずassetsの画像を表示
+          // Image.asset('assets/circle.png'),
+          // flutter_genを使ってassetsの画像を表示
+          Assets.circle.image(),
+          // svgファイルの表示。解像度を気にしなくていい
+          Assets.check.svg(
+            width: 100,
+            height: 100,
           ),
-          Icon(
-            Icons.beach_access,
-            color: Colors.blue,
-            size: 36.0,
-          ),
+          ElevatedButton(
+            child: const Text('次へ'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SecondPage()),
+              );
+            },
+          )
         ]),
-        const TextField(),
-        // flutter_genを使わずassetsの画像を表示
-        Image.asset('assets/circle.png'),
-        // flutter_genを使ってassetsの画像を表示
-        Assets.circle.image(),
-        // svgファイルの表示。解像度を気にしなくていい
-        Assets.check.svg(
-          width: 100,
-          height: 100,
-        ),
-        ElevatedButton(
-          child: const Text('次へ'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const SecondPage()),
-            );
-          },
-        )
       ]),
       floatingActionButton: FloatingActionButton(
           onPressed: () => {debugPrint("押したね？")},
