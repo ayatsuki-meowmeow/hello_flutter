@@ -49,6 +49,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
+      // ダークモードの設定
       darkTheme: ThemeData(
         colorSchemeSeed: Colors.deepPurple,
         brightness: Brightness.dark,
