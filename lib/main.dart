@@ -49,6 +49,10 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
+      darkTheme: ThemeData(
+        colorSchemeSeed: Colors.deepPurple,
+        brightness: Brightness.dark,
+      ),
       //ローカライゼーション(日本語化対応)
       // localizationsDelegates: const [
       //   GlobalWidgetsLocalizations.delegate,
