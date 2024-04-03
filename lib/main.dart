@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         // 色の設定
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)
-        // 背景色の設定
+            // 背景色の設定
             .copyWith(background: Colors.blueGrey),
         // 文字の装飾
         textTheme: const TextTheme(
@@ -144,12 +144,42 @@ class _MyHomePageState extends State<MyHomePage> {
           width: 100,
           height: 100,
         ),
+        ElevatedButton(
+          child: const Text('次へ'),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const SecondPage()),
+            );
+          },
+        )
       ]),
       floatingActionButton: FloatingActionButton(
           onPressed: () => {debugPrint("押したね？")},
           child: const Icon(Icons.timer)),
       drawer: const Drawer(child: Center(child: Text("ドロワー"))),
       endDrawer: const Drawer(child: Center(child: Text("エンドドロワー"))),
+    );
+  }
+}
+
+class SecondPage extends StatelessWidget {
+  const SecondPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Second Page'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text('戻る'),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
     );
   }
 }
